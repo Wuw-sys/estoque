@@ -1,5 +1,5 @@
 class Produto:
-    def _init_(self, nome=None, preco=0,quantidade=0,categoria=None,peso=0,codigo=None):
+    def __init__(self, nome=None, preco=0,quantidade=0,categoria=None,peso=0,codigo=None):
         self.nome=nome
         self.preco=preco
         self.quantidade=quantidade
@@ -23,3 +23,11 @@ class Produto:
             "peso": self.peso,
             "codigo": self.codigo
         }
+    def entrada(self,qtd):
+        self.quantidade = self.quantidade + qtd
+        
+    def retirada(self,qtd):
+        if qtd <= self.quantidade:
+            self.quantidade = self.quantidade - qtd
+            return True
+        return False
