@@ -1,4 +1,5 @@
-from produtos import Produto
+from produtos.produto import Produto
+from produtos.almoxarifado import Almoxarifado
 
 p1 = Produto()
 p1.nome = "Macarrão parafuso"
