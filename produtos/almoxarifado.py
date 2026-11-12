@@ -30,3 +30,17 @@ class Almoxarifado:
             return False # se nao acho o produto retorna falso
         produto.entrada(qtd)
         return True # deu bom, retorna verdadeiro
+
+    # 3. saida(codigo, qtd): tenta tirar produto do estoque se tiver bastante
+    def saida(self, codigo, qtd):
+        produto = self.buscar(codigo)
+        if produto is None:
+            return False # se o codigo nao existe da falso
+        return produto.saida(qtd) # usa o metodo la do produto pra ver se consegue tirar
+
+    # 4. listar(): devolve uma lista com o dicionario de cada produto
+    def listar(self):
+        lista = []
+        for p in self.produtos:
+            lista.append(p.listar_produtos())
+        return lista
