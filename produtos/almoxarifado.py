@@ -44,3 +44,31 @@ class Almoxarifado:
         for p in self.produtos:
             lista.append(p.listar_produtos())
         return lista
+
+    # 5. solicitacao_compra(): pega so o que ta em Repor ou Em falta pra comprar mais
+    def solicitacao_compra(self):
+        pedido = []
+        for p in self.produtos:
+            situacao_atual = p.situacao()
+            if situacao_atual == "Repor" or situacao_atual == "Em falta":
+                pedido.append({
+                    "codigo": p.codigo,
+                    "nome": p.nome,
+                    "situacao": situacao_atual
+                })
+        return pedido
+
+    # 6. valor_estoque(): calcula quanto dinheiro tem parado no total somando qtd vezes preço
+    def valor_estoque(self):
+        total = 0.0
+        for p in self.produtos:
+            total = total + (p.quantidade * p.preco)
+        return total
+
+    # 7. para_dicionario(): monta um dicionario grandao com os dados da unidade inteira
+    def para_dicionario(self):
+        return {
+            "unidade": self.unidade,
+            "total_produtos": len(self.produtos),
+            "produtos": self.listar()
+        }
