@@ -36,7 +36,7 @@ class Almoxarifado:
         produto = self.buscar(codigo)
         if produto is None:
             return False # se o codigo nao existe da falso
-        return produto.saida(qtd) # usa o metodo la do produto pra ver se consegue tirar
+        return produto.retirada()(qtd) # usa o metodo la do produto pra ver se consegue tirar
 
     # 4. listar(): devolve uma lista com o dicionario de cada produto
     def listar(self):
