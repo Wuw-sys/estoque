@@ -32,7 +32,7 @@ class Usuario:
     def pode(permissao):
         # Nota: preenchido logo abaixo na estrutura correta do método da instância
         pass
-
+    
     # 1. (Implementação correta)
     def pode(self, permissao):
         # Se a situação não for ativa, barra qualquer permissão
@@ -58,3 +58,23 @@ class Usuario:
                     if p not in lista_permissoes:
                         lista_permissoes.append(p)
         return lista_permissoes
+
+    # 3. trocar_senha(atual, nova): troca a senha se a atual estiver correta
+    def trocar_senha(self, atual, nova):
+        # Confere se a senha atual confere com a gravada
+        if self.conferir_senha(atual):
+            # Se estiver certa, atualiza o hash da senha nova
+            self._senha_hash = self._resumir(nova)
+            return True
+        return False
+
+    # 4. para_dicionario(): devolve os dados públicos do usuário sem expor a senha ou hashes
+    def para_dicionario(self):
+        return {
+            "matricula": self.matricula,
+            "nome": self.nome,
+            "papeis": self.papeis,
+            "permissoes": self.permissoes(),
+            "supervisor": self.supervisor,
+            "situacao": self.situacao
+        }
