@@ -47,3 +47,14 @@ class Usuario:
                 if permissao in PERMISSOES[papel]:
                     return True
         return False
+
+    # 2. permissoes(): junta todas as permissões dos cargos sem repetir nenhuma
+    def permissoes(self):
+        lista_permissoes = []
+        for papel in self.papeis:
+            if papel in PERMISSOES:
+                for p in PERMISSOES[papel]:
+                    # Adiciona apenas se já não estiver na lista para evitar duplicadas
+                    if p not in lista_permissoes:
+                        lista_permissoes.append(p)
+        return lista_permissoes
