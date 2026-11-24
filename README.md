@@ -18,4 +18,4 @@ Para executar os testes automatizados garantindo o reconhecimento correto dos pa
 python -m testes.teste_almoxarifado
 python -m testes.teste_usuario
 python -m testes.teste_controle_acesso
- & 'C:\Users\arthur_pereira154.EDU_FIESC\AppData\Roaming\uv\python\cpython-3.15.2-windows-x86_64-none\python.exe' -m testes.teste_usuario
+& 'C:\Users\arthur_pereira154.EDU_FIESC\AppData\Roaming\uv\python\cpython-3.15.2-windows-x86_64-none\python.exe' -m testes.teste_usuario
