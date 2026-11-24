@@ -16,3 +16,25 @@ class ControleAcesso:
         if u.matricula == matricula:
             return u
     return None
+
+#Guarda um usuário novo; False se a matrícula já existe
+ def cadastrar(self, usuario):
+        achado = self.buscar(usuario.matricula)
+        if achado is not None:
+            return False
+        self.usuarios.append(usuario)
+        return True
+
+    # Confere matrícula, senha e situação ativa; gera token de 32 chars hex (16 bytes)
+ def entrar(self, matricula, senha):
+        usuario = self.buscar(matricula)
+        if usuario is None:
+            return None
+        if usuario.situacao != "ativo":
+            return None
+        if not usuario.conferir_senha(senha):
+            return None
+
+        token = secrets.token_hex(16)
+        self.sessoes[token] = usuario.matricula
+        return token
